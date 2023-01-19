@@ -30,14 +30,27 @@
 		podman
 		podman-compose
 		neovim
+		nodePackages.npm
               ];
 
 	      programs.home-manager.enable = true;
 	      	
 	      programs.fish.enable = true;
+	      programs.fish.plugins = [
+		{
+        	  name = "nix-env";
+         	  src = pkgs.fetchFromGitHub {
+         		  owner = "lilyball";
+         		  repo = "nix-env.fish";
+         		  rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+         		  sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
+         		};
+        	}
+	      ];
 	      programs.fish.shellAliases = {
 		docker = "podman";
 		docker-compose = "podman-compose";
+		open = "explorer.exe";
 	      };
             })
           ];
