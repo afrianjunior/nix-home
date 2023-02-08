@@ -25,12 +25,12 @@
               home.packages = with pkgs; [
                 git
                 neofetch
-		nodenv
-		yarn
-		podman
-		podman-compose
-		neovim
-		nodePackages.npm
+                nodenv
+                podman
+                podman-compose
+                ack
+                neovim
+                nodePackages.npm
               ];
 
 	      programs.home-manager.enable = true;
@@ -48,11 +48,11 @@
         	}
 	      ];
 	      programs.fish.shellAliases = {
-		docker = "podman";
-		docker-compose = "podman-compose";
-		open = "explorer.exe";
-	      };
-            })
+          docker = "${pkgs.podman}/bin/podman";
+          docker-compose = "${pkgs.podman-compose}/bin/podman-compose";
+		      open = "explorer.exe";
+	        };
+        })
           ];
         };
       };
